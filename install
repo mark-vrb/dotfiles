@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# comma-separated list of directories to stow
+dotdirs=alacritty,tmux
+
+for dir in ${dotdirs//,/ }
+do
+    echo "stow $dir in $HOME"
+    stow -D --target=$HOME $dir
+    stow --target=$HOME $dir
+done
+
