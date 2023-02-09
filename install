@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # comma-separated list of directories to stow
-dotdirs=alacritty,tmux
+dotdirs=alacritty,tmux,nvim
 
 for dir in ${dotdirs//,/ }
 do
