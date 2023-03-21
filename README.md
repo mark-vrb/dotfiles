@@ -1,12 +1,20 @@
 # dotfiles
 
+WIP
+
 ### TODO
 
-[ ] - tmux startup configuration, windows, tabs, sessions
-[ ] - separate work and personal tmux startup config
-[ ] - nvim fuzzy search
-[ ] - nvim LSP
-[ ] - nvim LSP front-end stack - typescript, react, angular
-[ ] - nvim LSP ruby stack
-[ ] - nvim explore git integrations
+- tmux-sessionizer
+- ch.sh
+- commit .zshrc
+- lsp: rust, ruby
+- Vim theme https://github.com/folke/tokyonight.nvim
+  - Apply same for iTerm, tmux: https://github.com/folke/tokyonight.nvim/tree/main/extras
+- ubuntu support
 
+### Setup
+
+- zsh
+- oh-my-zsh
+- fzf
+- nvim
