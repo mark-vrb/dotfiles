@@ -4,17 +4,10 @@ WIP
 
 ### TODO
 
-- tmux-sessionizer
 - ch.sh
 - commit .zshrc
-- lsp: rust, ruby
-- Vim theme https://github.com/folke/tokyonight.nvim
-  - Apply same for iTerm, tmux: https://github.com/folke/tokyonight.nvim/tree/main/extras
+  - add `bin/.local/scripts` to PATH
+- add `bin` folder to install script
+- lsp: ruby (solargraph)
 - ubuntu support
 
-### Setup
-
-- zsh
-- oh-my-zsh
-- fzf
-- nvim
