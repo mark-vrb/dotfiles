@@ -377,6 +377,7 @@ local servers = {
   -- pyright = {},
   rust_analyzer = {},
   tsserver = {},
+  solargraph = {},
 
   lua_ls = {
     Lua = {
