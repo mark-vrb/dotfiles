@@ -74,12 +74,11 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme Tokyo Night
-    'folke/tokyonight.nvim',
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight'
-    end,
+    opts = {},
   },
 
   { -- Set lualine as statusline
@@ -153,6 +152,9 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- Set the colorscheme
+vim.cmd[[colorscheme tokyonight]]
 
 -- Set highlight on search
 vim.o.hlsearch = false
