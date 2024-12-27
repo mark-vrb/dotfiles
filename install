@@ -1,12 +1,10 @@
 #!/bin/bash
 
 # comma-separated list of directories to stow
-dotdirs=wezterm,tmux,nvim,bin
+dotdirs=wezterm,tmux,nvim,bin,ghostty
 
-for dir in ${dotdirs//,/ }
-do
-    echo "stow $dir in $HOME"
-    stow -D --target=$HOME $dir
-    stow --target=$HOME $dir
+for dir in ${dotdirs//,/ }; do
+  echo "stow $dir in $HOME"
+  stow -D --target=$HOME $dir
+  stow --target=$HOME $dir
 done
-
