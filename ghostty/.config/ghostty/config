@@ -1,4 +1,3 @@
-theme=BlulocoDark
+theme=tokyonight-storm
 font-size=16
 font-family="JetBrainsMono Nerd Font"
-macos-icon="holographic"
