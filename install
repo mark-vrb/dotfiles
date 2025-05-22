@@ -6,7 +6,7 @@ set -e # Exit on any error
 
 echo "🔧 Step 1: Checking required directories in \$HOME..."
 
-# List of required directories
+# List of required directories to avoid stowing the entire thing to this repo's folder
 required_dirs=(
   "$HOME/.config"
   "$HOME/.local"
