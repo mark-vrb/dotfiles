@@ -1,0 +1,19 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[window]
+dynamic_padding = true
+decorations = "none"
+opacity = 0.95
+startup_mode = "Fullscreen"
+# macos only, treat left Option key as Alt, try "Both" also if needed
+option_as_alt = "OnlyLeft"
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]

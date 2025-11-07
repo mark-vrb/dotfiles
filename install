@@ -1,10 +1,38 @@
 #!/bin/bash
 
-# comma-separated list of directories to stow
-dotdirs=alacritty,wezterm,tmux,nvim,bin,ghostty
+# TODO: test on a fresh system
 
-for dir in ${dotdirs//,/ }; do
-  echo "stow $dir in $HOME"
-  stow -D --target=$HOME $dir
-  stow --target=$HOME $dir
+set -e # Exit on any error
+
+echo "🔧 Step 1: Checking required directories in \$HOME..."
+
+# List of required directories to avoid stowing the entire thing to this repo's folder
+required_dirs=(
+  "$HOME/.config"
+  "$HOME/.local"
+)
+
+# Check and create each directory if needed
+for dir in "${required_dirs[@]}"; do
+  if [ ! -d "$dir" ]; then
+    echo "📁 Creating missing directory: $dir"
+    mkdir -p "$dir"
+  else
+    echo "✅ Directory exists: $dir"
+  fi
 done
+
+echo ""
+echo "📦 Step 2: Stowing dotfiles..."
+
+# Array of directories to stow
+dotdirs=(alacritty wezterm tmux nvim bin ghostty)
+
+for dir in "${dotdirs[@]}"; do
+  echo "🔄 Restowing '$dir' into \$HOME"
+  stow -D --target="$HOME" "$dir"
+  stow --target="$HOME" "$dir"
+done
+
+echo ""
+echo "🎉 All done! Dotfiles have been stowed successfully."
