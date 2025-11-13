@@ -1,3 +1,5 @@
-theme="TokyoNight"
-font-size=12
+theme="Catppuccin Latte"
+font-size=14
 font-family="JetBrainsMono Nerd Font"
+
+window-decoration=none
