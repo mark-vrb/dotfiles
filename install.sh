@@ -4,6 +4,27 @@
 
 set -e # Exit on any error
 
+# TODO: download this repo from git and land it into Code/dotfiles
+
+# TODO: macos & omarchy separate full system setup scripts
+# For macos:
+# 1. install brew
+# 2. via brew install:
+#   a. bash
+#   b. mise
+#   c. fzf
+#   d. nvim
+#   e. rupa/z
+#   f. starship
+#   g. ghostty
+# 3. chsh -s bin/bash
+# 4. configure git email and username
+# 5. append bashrc template to .bashrc in a smart way
+#   a. with a diff, when .bahsrc is already present
+# 6. stow dotfiles from this repo
+# 7. restart your new system, if user agrees
+#
+
 echo "🔧 Step 1: Checking required directories in \$HOME..."
 
 # List of required directories to avoid stowing the entire thing to this repo's folder

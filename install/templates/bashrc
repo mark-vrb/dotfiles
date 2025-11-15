@@ -1,0 +1,24 @@
+# ~/.bashrc
+
+# Setup brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Add my dotfiles scripts to path (e.g. tmux-sesh)
+export PATH="$HOME/.local/scripts:$PATH"
+
+# Add rupa/z to path
+eval ". $HOMEBREW_PREFIX/etc/profile.d/z.sh"
+
+# Load mise
+eval "$(mise activate bash)"
+
+# TODO: load conditionally, I use rbenv only on fw machine
+# Load rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+# FZF
+eval "$(fzf --bash)"
+
+# Starship
+eval "$(starship init bash)"
