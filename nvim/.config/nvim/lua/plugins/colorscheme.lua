@@ -7,7 +7,7 @@ return {
   },
 
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim", name = "gruvbox" },
 
   -- add catppuccin
   { "catppuccin/nvim", name = "catppuccin" },
@@ -16,7 +16,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "gruvbox",
     },
   },
 }
