@@ -4,7 +4,7 @@ return {
     opts = {
       servers = {
         ruby_lsp = {
-          cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+          cmd = { "bundle", "exec", "ruby-lsp" },
         },
         rubocop = {
           cmd = { "bundle", "exec", "rubocop", "--lsp", "--config", ".rubocop_trans.yml" },
