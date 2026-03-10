@@ -1,22 +1,12 @@
 return {
-  -- tokyonight night
   {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "night" },
+    "kepano/flexoki-neovim",
+    priority = 1000,
   },
-
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim", name = "gruvbox" },
-
-  -- add catppuccin
-  { "catppuccin/nvim", name = "catppuccin" },
-
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "flexoki-light",
     },
   },
 }
