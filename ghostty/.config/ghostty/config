@@ -23,3 +23,6 @@ palette = 15=#FFFCF0
 
 font-size=14
 font-family="JetBrainsMono Nerd Font"
+
+window-padding-balance = true
+window-padding-color = background
