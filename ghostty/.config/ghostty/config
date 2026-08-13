@@ -15,4 +15,3 @@ window-padding-balance = true
 # Define the minimum padding around the grid (adjust pixels as needed)
 window-padding-x = 10
 window-padding-y = 10
-
