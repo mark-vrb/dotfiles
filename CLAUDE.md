@@ -52,6 +52,7 @@ Minimal, hand-built config requiring **Neovim 0.11+** (uses native `vim.lsp.conf
 - `lua/config/lazy.lua` bootstraps `lazy.nvim` on first launch; plugins are declared per-file under `lua/plugins/` (one file per concern: `treesitter.lua`, `lsp.lua`, `completion.lua`, `nav.lua`, `format.lua`, `lint.lua`, `gitsigns.lua`), and `require("lazy").setup("plugins", ...)` auto-loads that whole directory.
 - LSP servers are managed via `mason` + native `vim.lsp.config` (not `nvim-lspconfig`'s older setup pattern) — ruby_lsp, basedpyright, rust_analyzer, ts_ls, html, cssls, tailwindcss, astro.
 - `rustfmt` is intentionally *not* Mason-managed — it should track the active `rustup` toolchain (`rustup component add rustfmt`).
+- `rubocop` is likewise intentionally *not* Mason-managed, for the same reason: it needs to track the per-project Ruby/gem toolchain (rbenv/bundler), not a global always-latest Mason copy. A global Mason `rubocop` can shadow the project's own `rubocop` on `PATH` inside Neovim and crash against older `rubocop-capybara`/`rubocop-rspec` extension gems that assume an older `rubocop` API. Install it per-project instead (`gem install rubocop` under the project's Ruby version, or via its `Gemfile`).
 - lazygit is used standalone, outside Neovim, by design — don't add `lazygit.nvim` or wire lazygit into a Neovim keymap.
 
 ## tmux

@@ -3,7 +3,11 @@ return {
     "mason-org/mason.nvim",
     opts = {
       -- non-LSP tools (formatters/linters) also installed through mason
-      ensure_installed = { "rubocop", "prettier" },
+      -- rubocop intentionally excluded: it should track the active rbenv/bundler
+      -- toolchain per-project (see rustfmt for the same reasoning), not a
+      -- global always-latest Mason copy that can crash on older rubocop
+      -- extension gems (rubocop-capybara, rubocop-rspec, etc.)
+      ensure_installed = { "prettier" },
     },
   },
   {
@@ -12,7 +16,6 @@ return {
     opts = {
       ensure_installed = {
         "ruby_lsp",       -- Ruby / Rails
-        "rubocop",        -- also registered here as an LSP-adjacent diagnostic source
         "basedpyright",   -- Python
         "rust_analyzer",  -- Rust
         "ts_ls",          -- TypeScript / JS
