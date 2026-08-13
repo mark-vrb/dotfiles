@@ -26,7 +26,7 @@ echo ""
 echo "📦 Step 2: Stowing dotfiles..."
 
 # Array of directories to stow
-dotdirs=(tmux nvim bin ghostty starship)
+dotdirs=(tmux nvim bin ghostty starship lazygit)
 
 for dir in "${dotdirs[@]}"; do
   echo "🔄 Restowing '$dir' into \$HOME"
