@@ -1,4 +1,18 @@
-font-size=14
-font-family="JetBrainsMono Nerd Font"
-theme=Nvim Light
+# Font setup
+font-size = 14
+font-family = "JetBrainsMono Nerd Font"
+
+# Theme, currently Neovim default-inspired light
+theme = Nvim Light
+
+# Disable decorations and hide the titlebar
+window-decoration = false
+macos-titlebar-style = hidden
+
+# Center the terminal grid within the window
+window-padding-balance = true
+
+# Define the minimum padding around the grid (adjust pixels as needed)
+window-padding-x = 10
+window-padding-y = 10
 
