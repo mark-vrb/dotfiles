@@ -1,3 +1,6 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- last-used buffer toggle
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Toggle last buffer" })
+
+-- plain sequential buffer cycling (built-in, no plugin)
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })

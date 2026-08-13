@@ -1,0 +1,28 @@
+# Theme matches Neovim default light colorscheme / tmux (see tmux/.tmux.conf)
+gui:
+  theme:
+    activeBorderColor:
+      - "#0000ff"
+      - bold
+    inactiveBorderColor:
+      - "#a9a9a9"
+    optionsTextColor:
+      - "#0000ff"
+    selectedLineBgColor:
+      - "#e0e0e0"
+    selectedRangeBgColor:
+      - "#e0e0e0"
+    cherryPickedCommitBgColor:
+      - "#4169e1"
+    cherryPickedCommitFgColor:
+      - "#ffffff"
+    markedBaseCommitBgColor:
+      - "#b8860b"
+    markedBaseCommitFgColor:
+      - "#ffffff"
+    unstagedChangesColor:
+      - "#ff0000"
+    defaultFgColor:
+      - "#090909"
+    searchingActiveBorderColor:
+      - "#008b8b"
