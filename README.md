@@ -1,13 +1,9 @@
 # dotfiles
 
-WIP
+### Future Items
 
-### TODO
-
-- ch.sh
-- commit .zshrc
-  - add `bin/.local/scripts` to PATH
-- add `bin` folder to install script
-- lsp: ruby (solargraph)
-- ubuntu support
+- [ ] Linux support. CachyOS (pacman + KDE)
+- [ ] Prerequesites installation system-wide
+- [ ] Dev tools preinstall system-wide
+- [ ] Come up with migration patterns
 
