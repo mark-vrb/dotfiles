@@ -63,7 +63,7 @@ lua/
 | `<leader>fg` | Live grep |
 | `<leader>fb` | Find buffers (MRU) |
 | `<leader>fo` | Recently opened files |
-| `<leader>fc` | Find files changed on this branch (vs `main`/`master`) |
+| `<leader>fc` | Find files changed on this branch (auto-detects parent branch from reflog, falls back to `main`/`master`) |
 | `-` | Open parent directory (oil) |
 | `<leader><leader>` | Toggle last buffer |
 | `[b` / `]b` | Cycle buffers |
