@@ -41,7 +41,7 @@ lua/
     lsp.lua        -- mason + LSP servers: ruby_lsp, basedpyright, rust_analyzer, ts_ls,
                        html, cssls, tailwindcss, astro
     completion.lua -- blink.cmp (LSP/path/snippet/buffer sources, no AI)
-    nav.lua        -- telescope (find/grep/MRU buffer switch) + oil (file explorer)
+    nav.lua        -- telescope (find/grep/MRU buffer switch/changed files) + oil (file explorer)
     format.lua     -- conform.nvim: rubocop, prettier, rustfmt, format-on-save
     lint.lua       -- nvim-lint: rubocop diagnostics separate from formatting
     gitsigns.lua   -- inline hunk signs/preview/stage/reset/blame
@@ -63,6 +63,7 @@ lua/
 | `<leader>fg` | Live grep |
 | `<leader>fb` | Find buffers (MRU) |
 | `<leader>fo` | Recently opened files |
+| `<leader>fc` | Find files changed on this branch (vs `main`/`master`) |
 | `-` | Open parent directory (oil) |
 | `<leader><leader>` | Toggle last buffer |
 | `[b` / `]b` | Cycle buffers |
