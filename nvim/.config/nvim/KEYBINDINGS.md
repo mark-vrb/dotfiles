@@ -13,6 +13,7 @@ box-drawing table in a floating window.
 | `<leader>fg` | Live grep | Custom |
 | `<leader>fb` | Find buffers (MRU) | Custom |
 | `<leader>fo` | Recently opened files | Custom |
+| `gf` | Go to file path under cursor; falls back to Telescope find_files pre-filled with it if not directly resolvable | Custom |
 | `-` | Open parent directory (oil) | Custom |
 | `<leader><leader>` | Toggle last buffer | Custom |
 | `[b` / `]b` | Cycle buffers | Custom |
