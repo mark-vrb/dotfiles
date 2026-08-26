@@ -5,13 +5,19 @@
 -- the LspProgress autocmd in plugins/lsp.lua and the statusline in
 -- config/options.lua) - normal redraws in between (cursor moves, mode
 -- changes, ...) find nothing new and go blank. This module instead keeps
--- the *last* message per (client, token) around until its matching "end"
--- event, so e.g. "54%: Indexing" stays visible the whole time a big Rails
--- codebase is being indexed, not just on the redraw where it changed.
+-- the *last* progress per (client, token) around until its matching "end"
+-- event, so e.g. "54% ruby_lsp: indexing" stays visible the whole time a
+-- big Rails codebase is being indexed, not just on the redraw where it
+-- changed - rendered short, since the percentage and which client is busy
+-- matter more than the exact wording of what it's doing.
 
 local M = {}
 
--- keyed by "<client_id>:<token>" -> { title, message, percentage }
+-- kept short on purpose: percentage and client name are the load-bearing
+-- info, the operation title is a nice-to-have so it's capped hard
+local MAX_TITLE_LEN = 20
+
+-- keyed by "<client_id>:<token>" -> { client_id, title, percentage }
 M._entries = {}
 -- insertion order, so rendering multiple concurrent progress streams is stable
 M._order = {}
@@ -46,16 +52,15 @@ function M.on_progress(client_id, token, value)
 
   if not M._entries[k] then
     table.insert(M._order, k)
-    M._entries[k] = {}
+    M._entries[k] = { client_id = client_id }
   end
   local entry = M._entries[k]
   entry.title = value.title or entry.title
-  entry.message = value.message
   entry.percentage = value.percentage
 end
 
 --- Drop everything tracked for a client - used on LspDetach so a client that
---- crashes mid-report doesn't leave a stale "Indexing: 54%" forever.
+--- crashes mid-report doesn't leave a stale "54% ruby_lsp: indexing" forever.
 --- @param client_id number
 function M.clear_client(client_id)
   local prefix = key(client_id, "")
@@ -68,27 +73,33 @@ function M.clear_client(client_id)
   end
 end
 
---- Render current progress for the statusline.
+--- Render current progress for the statusline, e.g. "40% ruby_lsp: indexing".
 --- @return string
 function M.render()
   local parts = {}
   for _, k in ipairs(M._order) do
     local entry = M._entries[k]
-    local message
-    if entry.title and entry.message then
-      message = entry.title .. ": " .. entry.message
-    else
-      message = entry.message or entry.title or ""
-    end
+    local client = vim.lsp.get_client_by_id(entry.client_id)
+    local piece = client and client.name or ("client " .. entry.client_id)
     if entry.percentage then
-      message = string.format("%d%%: %s", entry.percentage, message)
+      piece = entry.percentage .. "% " .. piece
     end
-    table.insert(parts, message)
+    if entry.title then
+      -- some servers prefix their own name into the title (e.g. ruby_lsp
+      -- sends "Ruby LSP: indexing files"), which would duplicate the client
+      -- name above, so keep only the part after the last colon
+      local op = entry.title:match(":%s*(.-)%s*$") or entry.title
+      if #op > MAX_TITLE_LEN then
+        op = op:sub(1, MAX_TITLE_LEN - 1) .. "…"
+      end
+      piece = piece .. ": " .. op
+    end
+    table.insert(parts, piece)
   end
   return table.concat(parts, ", ")
 end
 
---- Reset all tracked state. Used by tests.
+--- Reset all tracked state (e.g. after editing this file to try a format change).
 function M._reset()
   M._entries = {}
   M._order = {}
