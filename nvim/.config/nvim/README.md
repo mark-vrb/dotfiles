@@ -34,7 +34,8 @@ init.lua
 lua/
   config/
     options.lua   -- editing/UI options, hardcoded light background + default colorscheme
-    keymaps.lua    -- buffer nav (leader-leader = alternate buffer, [b/]b = cycle)
+    keymaps.lua    -- buffer nav (leader-leader = alternate buffer, [b/]b = cycle),
+                       <leader>? cheat-sheet popup of this table
     lazy.lua       -- plugin manager bootstrap
   plugins/
     treesitter.lua -- syntax/indent: ruby, python, rust, ts/tsx, html, css, astro, ...
@@ -59,6 +60,7 @@ lua/
 
 | Key | Action |
 |---|---|
+| `<leader>?` | Show this table in a floating window (cheat sheet) |
 | `<leader>ff` | Find files |
 | `<leader>fg` | Live grep |
 | `<leader>fb` | Find buffers (MRU) |
