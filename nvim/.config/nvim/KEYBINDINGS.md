@@ -13,6 +13,7 @@ box-drawing table in a floating window.
 | `<leader>fg` | Live grep | Custom |
 | `<leader>fb` | Find buffers (MRU) | Custom |
 | `<leader>fo` | Recently opened files | Custom |
+| `gf` | Go to file path under cursor, or a Rails route's `controller/path#action` (jumps to the `def`); falls back to Telescope find_files pre-filled with it if not directly resolvable | Custom |
 | `-` | Open parent directory (oil) | Custom |
 | `<leader><leader>` | Toggle last buffer | Custom |
 | `[b` / `]b` | Cycle buffers | Custom |
@@ -27,6 +28,7 @@ box-drawing table in a floating window.
 | `gO` | Document symbols | Default *(0.11)* |
 | `K` | Hover docs | Default *(0.11)* |
 | `<C-s>` (insert mode) | Signature help, on demand | Default *(0.11)* |
+| `"+y` | Yank to system clipboard (visual/normal mode) | Default |
 | `<leader>cf` | Format buffer | Custom |
 | `[h` / `]h` | Prev/next git hunk | Custom |
 | `<leader>hp` / `hs` / `hr` / `hb` | Preview / stage / reset / blame hunk | Custom |
