@@ -1,6 +1,6 @@
 # nvim config
 
-Minimal, hand-built Neovim config (Neovim 0.11+ required — uses native `vim.lsp.config`).
+Minimal, hand-built Neovim config (Neovim 0.11+ required - uses native `vim.lsp.config`).
 
 ## Install
 
@@ -12,7 +12,7 @@ nvim
 
 ## One manual step: rustfmt
 
-Not installed via Mason on purpose — it should track your active Rust toolchain via rustup,
+Not installed via Mason on purpose - it should track your active Rust toolchain via rustup,
 not a standalone Mason-managed binary:
 
 ```
@@ -51,11 +51,11 @@ lua/
 
 ## Deliberately excluded
 
-- **lazygit / lazygit.nvim** — used as a separate standalone tool, not wired into Neovim.
-- **harpoon** — dropped in favor of `<leader>fb` (Telescope buffers, MRU-sorted).
-- **bufferline.nvim** — no persistent buffer tab strip; `<leader>fb` / `:ls` on demand instead.
-- **diffview.nvim** — PR-level diffing stays in lazygit.
-- **OS theme sync** — background is hardcoded to light, not synced to system appearance.
+- **lazygit / lazygit.nvim** - used as a separate standalone tool, not wired into Neovim.
+- **harpoon** - dropped in favor of `<leader>fb` (Telescope buffers, MRU-sorted).
+- **bufferline.nvim** - no persistent buffer tab strip; `<leader>fb` / `:ls` on demand instead.
+- **diffview.nvim** - PR-level diffing stays in lazygit.
+- **OS theme sync** - background is hardcoded to light, not synced to system appearance.
 
 ## Key bindings
 

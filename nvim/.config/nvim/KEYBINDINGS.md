@@ -1,7 +1,7 @@
 # Key bindings quick reference
 
-`Source` says whether the key is defined by this config (**Custom** — grep for it under `lua/`)
-or ships with Neovim itself (**Default** — nothing to configure, works in any 0.11+ install).
+`Source` says whether the key is defined by this config (**Custom** - grep for it under `lua/`)
+or ships with Neovim itself (**Default** - nothing to configure, works in any 0.11+ install).
 
 Shown in Neovim itself via `<leader>?` (see `lua/config/keymaps.lua`), rendered as an aligned
 box-drawing table in a floating window.
@@ -20,7 +20,7 @@ box-drawing table in a floating window.
 | `<C-w>w` | Cycle to next window | Default |
 | `<C-w>p` | Jump to previously active window | Default |
 | `gd` | Go to definition | Custom |
-| `<C-o>` / `<C-i>` | Back / forward through the jumplist (e.g. return from a `gd` jump — works across files) | Default |
+| `<C-o>` / `<C-i>` | Back / forward through the jumplist (e.g. return from a `gd` jump - works across files) | Default |
 | `:jumps` | Show the full jump list | Default |
 | `grr` / `gri` / `grt` | References / implementation / type definition | Default *(0.11)* |
 | `grn` / `gra` | Rename / code action | Default *(0.11)* |
