@@ -58,22 +58,30 @@ lua/
 
 ## Key bindings quick reference
 
-| Key | Action |
-|---|---|
-| `<leader>?` | Show this table in a floating window (cheat sheet) |
-| `<leader>ff` | Find files |
-| `<leader>fg` | Live grep |
-| `<leader>fb` | Find buffers (MRU) |
-| `<leader>fo` | Recently opened files |
-| `-` | Open parent directory (oil) |
-| `<leader><leader>` | Toggle last buffer |
-| `[b` / `]b` | Cycle buffers |
-| `gd` | Go to definition (only custom LSP nav keymap — no built-in default) |
-| `grr` / `gri` / `grt` | References / implementation / type definition *(Neovim 0.11 built-in)* |
-| `grn` / `gra` | Rename / code action *(Neovim 0.11 built-in)* |
-| `gO` | Document symbols *(Neovim 0.11 built-in)* |
-| `K` | Hover docs *(Neovim 0.11 built-in)* |
-| `<C-s>` (insert mode) | Signature help, on demand *(Neovim 0.11 built-in)* |
-| `<leader>cf` | Format buffer |
-| `[h` / `]h` | Prev/next git hunk |
-| `<leader>hp` / `hs` / `hr` / `hb` | Preview / stage / reset / blame hunk |
+`Source` says whether the key is defined by this config (**Custom** — grep for it under `lua/`)
+or ships with Neovim itself (**Default** — nothing to configure, works in any 0.11+ install).
+
+| Key | Action | Source |
+|---|---|---|
+| `<leader>?` | Show this table in a floating window (cheat sheet) | Custom |
+| `<leader>ff` | Find files | Custom |
+| `<leader>fg` | Live grep | Custom |
+| `<leader>fb` | Find buffers (MRU) | Custom |
+| `<leader>fo` | Recently opened files | Custom |
+| `-` | Open parent directory (oil) | Custom |
+| `<leader><leader>` | Toggle last buffer | Custom |
+| `[b` / `]b` | Cycle buffers | Custom |
+| `<C-w>h/j/k/l` | Move to split left/down/up/right | Default |
+| `<C-w>w` | Cycle to next window | Default |
+| `<C-w>p` | Jump to previously active window | Default |
+| `gd` | Go to definition | Custom |
+| `<C-o>` / `<C-i>` | Back / forward through the jumplist (e.g. return from a `gd` jump — works across files) | Default |
+| `:jumps` | Show the full jump list | Default |
+| `grr` / `gri` / `grt` | References / implementation / type definition | Default *(0.11)* |
+| `grn` / `gra` | Rename / code action | Default *(0.11)* |
+| `gO` | Document symbols | Default *(0.11)* |
+| `K` | Hover docs | Default *(0.11)* |
+| `<C-s>` (insert mode) | Signature help, on demand | Default *(0.11)* |
+| `<leader>cf` | Format buffer | Custom |
+| `[h` / `]h` | Prev/next git hunk | Custom |
+| `<leader>hp` / `hs` / `hr` / `hb` | Preview / stage / reset / blame hunk | Custom |
