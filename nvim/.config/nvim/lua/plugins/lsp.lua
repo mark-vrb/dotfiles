@@ -63,6 +63,15 @@ return {
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
         end,
       })
+
+      -- vim.lsp.status() (wired into the statusline in config/options.lua) only
+      -- updates on redraw, so force one whenever a server reports progress
+      -- (e.g. ruby_lsp indexing a large Rails codebase)
+      vim.api.nvim_create_autocmd("LspProgress", {
+        callback = function()
+          vim.cmd.redrawstatus()
+        end,
+      })
     end,
   },
 }
