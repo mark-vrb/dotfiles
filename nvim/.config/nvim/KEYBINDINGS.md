@@ -28,6 +28,7 @@ box-drawing table in a floating window.
 | `gO` | Document symbols | Default *(0.11)* |
 | `K` | Hover docs | Default *(0.11)* |
 | `<C-s>` (insert mode) | Signature help, on demand | Default *(0.11)* |
+| `"+y` | Yank to system clipboard (visual/normal mode) | Default |
 | `<leader>cf` | Format buffer | Custom |
 | `[h` / `]h` | Prev/next git hunk | Custom |
 | `<leader>hp` / `hs` / `hr` / `hb` | Preview / stage / reset / blame hunk | Custom |
