@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>?", function()
   for j = 1, ncols do
     widths[j] = 0
     for _, r in ipairs(rows) do
-      widths[j] = math.max(widths[j], #r[j])
+      widths[j] = math.max(widths[j], vim.fn.strdisplaywidth(r[j]))
     end
   end
 
@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>?", function()
     local line, col = "│", #"│"
     for j = 1, ncols do
       local cell = cells[j] or ""
-      local piece = " " .. cell .. string.rep(" ", widths[j] - #cell) .. " "
+      local piece = " " .. cell .. string.rep(" ", widths[j] - vim.fn.strdisplaywidth(cell)) .. " "
       local start_col = col + 1
       if not is_header and j == 1 then
         table.insert(highlights, { #out, start_col, #cell, "Special" })
