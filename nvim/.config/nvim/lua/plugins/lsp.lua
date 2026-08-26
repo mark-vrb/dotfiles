@@ -64,11 +64,21 @@ return {
         end,
       })
 
-      -- vim.lsp.status() (wired into the statusline in config/options.lua) only
-      -- updates on redraw, so force one whenever a server reports progress
-      -- (e.g. ruby_lsp indexing a large Rails codebase)
+      -- track progress (e.g. ruby_lsp indexing a large Rails codebase) for the
+      -- statusline in config/options.lua, and force a redraw so it's visible
+      -- immediately rather than waiting for the next natural redraw
       vim.api.nvim_create_autocmd("LspProgress", {
-        callback = function()
+        callback = function(args)
+          require("config.lsp_status").on_progress(args.data.client_id, args.data.params.token, args.data.params.value)
+          vim.cmd.redrawstatus()
+        end,
+      })
+
+      -- don't leave a stale "Indexing: 54%" behind if a client detaches or
+      -- crashes mid-report without ever sending an "end" progress event
+      vim.api.nvim_create_autocmd("LspDetach", {
+        callback = function(args)
+          require("config.lsp_status").clear_client(args.data.client_id)
           vim.cmd.redrawstatus()
         end,
       })

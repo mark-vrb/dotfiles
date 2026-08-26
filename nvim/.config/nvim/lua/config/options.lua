@@ -13,9 +13,11 @@ o.termguicolors = true
 o.splitright = true
 o.splitbelow = true
 
--- statusline: default layout plus native LSP progress (e.g. ruby_lsp indexing
--- a large Rails app) so it's visible when navigation/completion may be stale
-o.statusline = "%f %h%w%m%r%=%{v:lua.vim.lsp.status()} %-14.14(%l,%c%V%) %P"
+-- statusline: default layout plus LSP progress (e.g. ruby_lsp indexing a
+-- large Rails app) so it's visible when navigation/completion may be stale.
+-- Uses config/lsp_status.lua rather than vim.lsp.status() directly, since
+-- that drains its progress messages on read and would only flash briefly.
+o.statusline = "%f %h%w%m%r%=%{v:lua.require'config.lsp_status'.render()} %-14.14(%l,%c%V%) %P"
 
 -- editing
 o.expandtab = true
