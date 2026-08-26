@@ -5,20 +5,15 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Toggle last buffer" }
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
--- cheat sheet: parse this config's README key-bindings table and render it
--- as an aligned box-drawing table in a floating window
+-- cheat sheet: parse KEYBINDINGS.md's key-bindings table and render it as
+-- an aligned box-drawing table in a floating window
 vim.keymap.set("n", "<leader>?", function()
-  local lines = vim.fn.readfile(vim.fn.stdpath("config") .. "/README.md")
+  local lines = vim.fn.readfile(vim.fn.stdpath("config") .. "/KEYBINDINGS.md")
 
-  -- pull the "| Key | Action | Source |" table out of the README's
-  -- "## Key bindings quick reference" section
-  local rows, in_table = {}, false
+  -- pull the "| Key | Action | Source |" table out of the file
+  local rows = {}
   for _, line in ipairs(lines) do
-    if not in_table then
-      if line:match("^##%s*Key bindings") then
-        in_table = true
-      end
-    elseif line:match("^|%s*%-%-%-") then
+    if line:match("^|%s*%-%-%-") then
       -- header separator row, skip
     elseif line:match("^|") then
       local cells = {}
