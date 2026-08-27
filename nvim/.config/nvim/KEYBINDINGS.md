@@ -32,3 +32,5 @@ box-drawing table in a floating window.
 | `<leader>cf` | Format buffer | Custom |
 | `[h` / `]h` | Prev/next git hunk | Custom |
 | `<leader>hp` / `hs` / `hr` / `hb` | Preview / stage / reset / blame hunk | Custom |
+| `<leader>tm` | Mark a tmux pane to run specs in | Custom |
+| `<leader>ts` | Run spec for current file (`rake web:spec[...]`) in the marked tmux pane | Custom |

@@ -102,3 +102,78 @@ vim.keymap.set("n", "<leader>?", function()
   vim.keymap.set("n", "q", close, { buffer = buf, nowait = true })
   vim.keymap.set("n", "<Esc>", close, { buffer = buf, nowait = true })
 end, { desc = "Show key bindings cheat sheet" })
+
+-- run the current file's spec in a marked tmux pane (e.g. a pane with a
+-- shell inside the Rails container), instead of copying the path to the
+-- clipboard and pasting it manually
+local tmux_spec_target = nil
+
+-- map app/**/foo.rb <-> spec/**/foo_spec.rb (a file already under spec/
+-- is used as-is); lib/**/foo.rb -> spec/lib/**/foo_spec.rb
+local function rspec_path_for_current_buffer()
+  local abs = vim.fn.expand("%:p")
+  if abs == "" then
+    return nil, "buffer has no file"
+  end
+
+  local root = vim.fs.root(abs, { ".git", "Gemfile" }) or vim.fn.getcwd()
+  local rel = abs:sub(#root + 2)
+
+  if rel:match("_spec%.rb$") then
+    return rel
+  end
+  if not rel:match("%.rb$") then
+    return nil, "not a Ruby file"
+  end
+
+  if rel:match("^app/") then
+    rel = "spec/" .. rel:sub(#"app/" + 1)
+  elseif rel:match("^lib/") then
+    rel = "spec/" .. rel
+  elseif not rel:match("^spec/") then
+    return nil, "don't know how to map this path to a spec"
+  end
+
+  return (rel:gsub("%.rb$", "_spec.rb"))
+end
+
+vim.keymap.set("n", "<leader>tm", function()
+  if vim.env.TMUX == nil then
+    vim.notify("Not running inside tmux", vim.log.levels.WARN)
+    return
+  end
+
+  local raw = vim.fn.system({
+    "tmux",
+    "list-panes",
+    "-a",
+    "-F",
+    "#{session_name}:#{window_index}.#{pane_index} [#{pane_current_command}] #{pane_title}",
+  })
+  local panes = vim.split(raw, "\n", { trimempty = true })
+
+  vim.ui.select(panes, { prompt = "Mark tmux pane to run specs in" }, function(choice)
+    if not choice then
+      return
+    end
+    tmux_spec_target = choice:match("^%S+")
+    vim.notify("Marked tmux pane: " .. tmux_spec_target)
+  end)
+end, { desc = "Mark tmux pane to run specs in" })
+
+vim.keymap.set("n", "<leader>ts", function()
+  if not tmux_spec_target then
+    vim.notify("No tmux pane marked - run <leader>tm first", vim.log.levels.WARN)
+    return
+  end
+
+  local spec_path, err = rspec_path_for_current_buffer()
+  if not spec_path then
+    vim.notify("Can't resolve a spec for this file: " .. err, vim.log.levels.WARN)
+    return
+  end
+
+  local cmd = string.format("rake 'web:spec[%s]'", spec_path)
+  vim.fn.system({ "tmux", "send-keys", "-t", tmux_spec_target, cmd, "Enter" })
+  vim.notify("Sent to " .. tmux_spec_target .. ": " .. cmd)
+end, { desc = "Run spec for current file in marked tmux pane" })
